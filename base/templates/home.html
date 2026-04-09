@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="page-header">
+    
+    <h1>Home Page</h1>
+</div>
+
+<div class="category-container">
+    {% for i in category %}
+    <form  method="GET" class="category-form">
+        <button type="submit" value="{{i}}" name="cat" class="category-btn">
+            {{i}}
+        </button>
+    </form>
+    {% endfor %}
+</div>
+
+{% if no_match %}
+<h1 class="no-product">NO PRODUCT FOUND..!!</h1>
+{% endif %}
+
+{% if trend %}
+<h2 class="section-title">🔥 Trending Now</h2>
+{% endif %}
+
+{% if offer %}
+<h2 class="section-title">💸 50% OFF Products</h2>
+{% endif %}
+
+<div class="product-container">
+    {% for i in all_products %}
+    <div class="product-card">
+        <img src="{{i.pimage.url}}" class="product-img">
+
+        <h3 class="product-name">{{i.pname}}</h3>
+        <p class="product-desc">{{i.pdesc}}</p>
+        <p class="product-price">₹ {{i.price}}</p>
+
+        <a href="{% url 'addtocart' i.id %}" class="cart-btn">Add to Cart</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

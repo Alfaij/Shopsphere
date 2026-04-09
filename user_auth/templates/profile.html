@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block page_class %}center-page{% endblock %}
+{% block content %}
+
+<div class="profile-container">
+    <div class="profile-card">
+
+        <h1 class="profile-title">My Profile</h1>
+
+        <div class="profile-info">
+            <p><span>Username:</span> {{ request.user.username }}</p>
+            <p><span>First Name:</span> {{ request.user.first_name|default:"Not set" }}</p>
+            <p><span>Last Name:</span> {{ request.user.last_name|default:"Not set" }}</p>
+            <p><span>Email:</span> {{ request.user.email }}</p>
+            <p><span>Status:</span> Logged In</p>
+        </div>
+
+        <a href="{% url 'reset_pass' %}" class="reset-btn">
+            Reset Password
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

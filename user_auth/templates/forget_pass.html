@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="forget-wrapper">
+
+    <div class="forget-card">
+        <h1 class="forget-title">Forgot Password</h1>
+
+        {% if error %}
+        <div class="forget-error">User Not Found</div>
+        {% endif %}
+
+        <form method="POST" class="forget-form">
+            {% csrf_token %}
+            
+            <label>Enter Username</label>
+            <input type="text" name="username">
+
+            <button type="submit" class="forget-btn">Submit</button>
+        </form>
+
+    </div>
+
+</div>
+{% endblock %}
